@@ -66,6 +66,71 @@
   border-color: rgba(220, 38, 38, 0.3);
 }
 
+/* ===== Social Login ===== */
+.auth-social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.auth-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.auth-social-btn:hover {
+  opacity: 0.85;
+}
+
+.auth-kakao {
+  background: #FEE500;
+  color: #191919;
+}
+
+.auth-google {
+  background: #fff;
+  color: #444;
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .auth-google {
+  background: var(--bg-secondary);
+  color: var(--text);
+}
+
+/* ===== Divider ===== */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.auth-divider span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ===== Form ===== */
 .auth-form {
   display: flex;
   flex-direction: column;

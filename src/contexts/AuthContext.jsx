@@ -39,6 +39,26 @@ export function AuthProvider({ children }) {
     return data
   }
 
+  async function signInWithGoogle() {
+    if (!supabase) throw new Error('Supabase not configured')
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin },
+    })
+    if (error) throw error
+    return data
+  }
+
+  async function signInWithKakao() {
+    if (!supabase) throw new Error('Supabase not configured')
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'kakao',
+      options: { redirectTo: window.location.origin },
+    })
+    if (error) throw error
+    return data
+  }
+
   async function signOut() {
     if (!supabase) return
     const { error } = await supabase.auth.signOut()
@@ -51,6 +71,8 @@ export function AuthProvider({ children }) {
     isAuthenticated: !!user,
     isAdminUser: isAdmin(user?.email),
     signInWithEmail,
+    signInWithGoogle,
+    signInWithKakao,
     signOut,
   }
 
