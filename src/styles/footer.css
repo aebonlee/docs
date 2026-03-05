@@ -24,6 +24,7 @@
 .footer-logo .brand-dream { color: #fff; }
 .footer-logo .brand-it { color: var(--primary); }
 .footer-logo .brand-biz { color: #94a3b8; }
+.footer-logo .brand-sep { color: #64748b; font-weight: 400; }
 .footer-logo .brand-docs { color: var(--primary); font-weight: 700; }
 
 .footer-desc {

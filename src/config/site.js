@@ -8,7 +8,8 @@ export const siteConfig = {
       { text: 'Dream', className: 'brand-dream' },
       { text: 'IT', className: 'brand-it' },
       { text: ' Biz', className: 'brand-biz' },
-      { text: ' Docs', className: 'brand-docs' },
+      { text: ' - ', className: 'brand-sep' },
+      { text: 'Docs', className: 'brand-docs' },
     ],
   },
 
@@ -34,6 +35,11 @@ export const siteConfig = {
     { label: '프로그래밍', path: '/category/programming' },
     { label: '컴퓨터과학', path: '/category/computer-science' },
     { label: '수학', path: '/category/mathematics' },
+    { label: '과학', path: '/category/science' },
+    { label: '영어', path: '/category/english' },
+    { label: '경제/경영', path: '/category/business' },
+    { label: '자격증', path: '/category/certifications' },
+    { label: '기타', path: '/category/others' },
   ],
 
   familySites: [

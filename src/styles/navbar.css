@@ -39,6 +39,7 @@
 .navbar-logo .brand-dream { color: var(--text); }
 .navbar-logo .brand-it { color: var(--primary); }
 .navbar-logo .brand-biz { color: var(--text-secondary); font-weight: 600; }
+.navbar-logo .brand-sep { color: var(--text-muted); font-weight: 400; }
 .navbar-logo .brand-docs { color: var(--primary); font-weight: 700; }
 
 .navbar-links {
