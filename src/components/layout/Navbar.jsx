@@ -81,7 +81,9 @@ export default function Navbar() {
       <nav className={`navbar${scrolled ? ' navbar-scrolled' : ''}`}>
         <div className="navbar-inner">
           <Link to="/" className="navbar-logo">
-            {siteConfig.logo}
+            {siteConfig.brand.parts.map((part, i) => (
+              <span key={i} className={part.className}>{part.text}</span>
+            ))}
           </Link>
 
           <div className={`navbar-links${menuOpen ? ' open' : ''}`}>

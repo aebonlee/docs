@@ -32,10 +32,14 @@
 .navbar-logo {
   font-size: 1.375rem;
   font-weight: 800;
-  color: var(--primary);
   letter-spacing: -0.025em;
   flex-shrink: 0;
 }
+
+.navbar-logo .brand-dream { color: var(--text); }
+.navbar-logo .brand-it { color: var(--primary); }
+.navbar-logo .brand-biz { color: var(--text-secondary); font-weight: 600; }
+.navbar-logo .brand-docs { color: var(--primary); font-weight: 700; }
 
 .navbar-links {
   display: flex;
