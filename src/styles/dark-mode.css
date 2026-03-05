@@ -1,0 +1,34 @@
+/* === Dark Mode === */
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #1a2332;
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: #334155;
+  --border-light: #1e293b;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 50%, var(--bg-tertiary) 100%);
+}
+
+[data-theme="dark"] .category-hero {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cat-color, var(--primary)) 5%, var(--bg)) 0%, var(--bg) 100%);
+}
+
+[data-theme="dark"] .footer {
+  background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg) 100%);
+}
+
+[data-theme="dark"] .search-modal {
+  background: var(--bg-secondary);
+}

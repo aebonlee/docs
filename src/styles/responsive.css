@@ -1,0 +1,133 @@
+/* === Responsive: Tablet (1024px) === */
+@media (max-width: 1024px) {
+  .navbar-links {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: var(--shadow-lg);
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* === Responsive: Mobile (768px) === */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 56px;
+  }
+
+  .hero {
+    padding: 4rem 0 3rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-stats {
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .section {
+    padding: 2.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .document-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .category-hero {
+    padding: 3.5rem 0 2rem;
+  }
+
+  .category-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .viewer-title-row {
+    flex-direction: column;
+  }
+
+  .viewer-title {
+    font-size: 1.25rem;
+  }
+
+  .pdf-iframe {
+    min-height: 60vh;
+  }
+}
+
+/* === Responsive: Small Mobile (480px) === */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    padding: 1.25rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .search-modal {
+    margin: 1rem;
+    width: auto;
+  }
+}

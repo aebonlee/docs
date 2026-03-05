@@ -1,0 +1,12 @@
+@import './styles/base.css';
+@import './styles/navbar.css';
+@import './styles/hero.css';
+@import './styles/category.css';
+@import './styles/document.css';
+@import './styles/viewer.css';
+@import './styles/footer.css';
+@import './styles/animations.css';
+@import './styles/dark-mode.css';
+@import './styles/responsive.css';
+@import './styles/toast.css';
+@import './styles/site.css';
