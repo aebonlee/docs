@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { categories } from '../config/site'
-import { documents } from '../data/documents'
+import { fetchDocuments, fetchCategoryCounts } from '../services/documents'
 import CategoryCard from '../components/CategoryCard'
 import DocumentCard from '../components/DocumentCard'
 import SEOHead from '../components/SEOHead'
 
 export default function Home() {
-  const recentDocs = [...documents]
+  const [docs, setDocs] = useState([])
+  const [counts, setCounts] = useState({})
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const [allDocs, catCounts] = await Promise.all([
+          fetchDocuments(),
+          fetchCategoryCounts(),
+        ])
+        setDocs(allDocs)
+        setCounts(catCounts)
+      } catch (err) {
+        console.error('Home load error:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [])
+
+  const recentDocs = [...docs]
     .sort((a, b) => (b.addedAt || '').localeCompare(a.addedAt || ''))
     .slice(0, 6)
+
+  const totalDocs = docs.length
 
   return (
     <>
@@ -31,7 +55,7 @@ export default function Home() {
               <span className="stat-label">분야</span>
             </div>
             <div className="stat">
-              <span className="stat-number">{documents.length}</span>
+              <span className="stat-number">{loading ? '-' : totalDocs}</span>
               <span className="stat-label">자료</span>
             </div>
           </div>
@@ -43,13 +67,13 @@ export default function Home() {
           <h2 className="section-title" data-aos="fade-up">분야별 카테고리</h2>
           <div className="category-grid">
             {categories.map((cat, i) => (
-              <CategoryCard key={cat.id} category={cat} index={i} />
+              <CategoryCard key={cat.id} category={cat} index={i} docCount={counts[cat.id]} />
             ))}
           </div>
         </div>
       </section>
 
-      {recentDocs.length > 0 && (
+      {!loading && recentDocs.length > 0 && (
         <section className="section">
           <div className="container">
             <h2 className="section-title" data-aos="fade-up">최근 추가된 자료</h2>

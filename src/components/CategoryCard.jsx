@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getDocumentsByCategory } from '../data/documents'
 
 const icons = {
   code: (
@@ -61,8 +60,8 @@ const icons = {
   ),
 }
 
-export default function CategoryCard({ category, index }) {
-  const docs = getDocumentsByCategory(category.id)
+export default function CategoryCard({ category, index, docCount }) {
+  const count = docCount !== undefined ? docCount : 0
 
   return (
     <Link
@@ -79,7 +78,7 @@ export default function CategoryCard({ category, index }) {
       </div>
       <h3 className="category-name">{category.name}</h3>
       <p className="category-desc">{category.description}</p>
-      <span className="category-count">{docs.length}개 자료</span>
+      <span className="category-count">{count}개 자료</span>
     </Link>
   )
 }

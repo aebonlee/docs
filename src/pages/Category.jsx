@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { categories } from '../config/site'
-import { getDocumentsByCategory } from '../data/documents'
+import { fetchDocumentsByCategory } from '../services/documents'
 import DocumentCard from '../components/DocumentCard'
 import SEOHead from '../components/SEOHead'
 
 export default function Category() {
   const { categoryId } = useParams()
   const category = categories.find((c) => c.id === categoryId)
-  const docs = getDocumentsByCategory(categoryId)
+  const [docs, setDocs] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function load() {
+      setLoading(true)
+      try {
+        const data = await fetchDocumentsByCategory(categoryId)
+        setDocs(data)
+      } catch (err) {
+        console.error('Category load error:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [categoryId])
 
   if (!category) {
     return (
@@ -35,13 +51,19 @@ export default function Category() {
           </div>
           <h1 className="category-hero-title" data-aos="fade-up">{category.name}</h1>
           <p className="category-hero-desc" data-aos="fade-up">{category.description}</p>
-          <span className="category-hero-count" data-aos="fade-up">{docs.length}개 자료</span>
+          <span className="category-hero-count" data-aos="fade-up">
+            {loading ? '...' : `${docs.length}개 자료`}
+          </span>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          {docs.length > 0 ? (
+          {loading ? (
+            <div className="loading-screen" style={{ minHeight: '200px' }}>
+              <div className="loading-spinner" />
+            </div>
+          ) : docs.length > 0 ? (
             <div className="document-grid">
               {docs.map((doc, i) => (
                 <DocumentCard key={doc.id} doc={doc} index={i} />

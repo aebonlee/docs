@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { categories } from '../config/site'
-import { getDocumentById } from '../data/documents'
+import { fetchDocumentById } from '../services/documents'
 import PDFViewer from '../components/PDFViewer'
 import SEOHead from '../components/SEOHead'
 
 export default function Viewer() {
   const { docId } = useParams()
-  const doc = getDocumentById(docId)
+  const [doc, setDoc] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function load() {
+      setLoading(true)
+      try {
+        const data = await fetchDocumentById(docId)
+        setDoc(data)
+      } catch (err) {
+        console.error('Viewer load error:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [docId])
+
+  if (loading) {
+    return (
+      <div className="loading-screen">
+        <SEOHead title="문서 로딩중..." />
+        <div className="loading-spinner" />
+      </div>
+    )
+  }
 
   if (!doc) {
     return (
@@ -22,7 +47,7 @@ export default function Viewer() {
   }
 
   const category = categories.find((c) => c.id === doc.category)
-  const pdfUrl = `${import.meta.env.BASE_URL}pdfs/${doc.category}/${doc.fileName}`
+  const pdfUrl = doc.fileUrl || `${import.meta.env.BASE_URL}pdfs/${doc.category}/${doc.fileName}`
 
   return (
     <>
