@@ -1,12 +1,16 @@
 {
   "name": "docs",
+  "description": "문서 시스템",
+  "homepage": "https://docs.dreamitbiz.com",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.98.0",
@@ -16,6 +20,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.0",
+    "gh-pages": "^6.3.0",
     "vite": "^6.0.0"
   }
 }
