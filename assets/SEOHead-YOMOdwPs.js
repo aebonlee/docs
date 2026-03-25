@@ -1,0 +1,1 @@
+import{R as r}from"./index-C5XJtf_R.js";function a({title:e,description:t}){const c=e?`${e} - Docs Library`:"Docs Library";return r.useEffect(()=>{document.title=c;const o=document.querySelector('meta[name="description"]');o&&t&&o.setAttribute("content",t)},[c,t]),null}export{a as S};
