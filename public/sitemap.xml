@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Category: programming -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/programming</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: computer-science -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/computer-science</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: mathematics -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/mathematics</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: science -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/science</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: english -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/english</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: business -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/business</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Category: certifications -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/category/certifications</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Document: python-basics -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/python-basics</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: javascript-es6 -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/javascript-es6</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: data-structures -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/data-structures</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: algorithms-intro -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/algorithms-intro</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: linear-algebra -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/linear-algebra</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: physics-mechanics -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/physics-mechanics</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: english-grammar -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/english-grammar</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: economics-intro -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/economics-intro</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Document: engineer-info-processing -->
+  <url>
+    <loc>https://docs.dreamitbiz.com/view/engineer-info-processing</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
