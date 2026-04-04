@@ -11,24 +11,82 @@
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --primary-glow: rgba(59, 130, 246, 0.3);
+  --glass-bg: rgba(15, 23, 42, 0.85);
 }
 
 [data-theme="dark"] .navbar {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+[data-theme="dark"] .navbar-scrolled {
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .hero {
-  background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg) 50%, var(--bg-tertiary) 100%);
+  background: linear-gradient(135deg, #060d1b 0%, #0a1830 40%, #122952 70%, #08132a 100%);
 }
 
 [data-theme="dark"] .category-hero {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--cat-color, var(--primary)) 5%, var(--bg)) 0%, var(--bg) 100%);
+  background: linear-gradient(135deg, #060d1b 0%, #0a1830 40%, #122952 70%, #08132a 100%);
+}
+
+[data-theme="dark"] .viewer-header {
+  background: linear-gradient(135deg, #060d1b 0%, #0a1830 50%, #122952 100%);
+}
+
+[data-theme="dark"] .category-card {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .category-card:hover {
+  background: color-mix(in srgb, var(--bg-secondary) 90%, var(--card-color, var(--primary)));
+}
+
+[data-theme="dark"] .document-card {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .document-card:hover {
+  background: color-mix(in srgb, var(--bg-secondary) 92%, var(--primary));
 }
 
 [data-theme="dark"] .footer {
-  background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg) 100%);
+  background: linear-gradient(180deg, #0d1525 0%, #0a101e 50%, #060b14 100%);
 }
 
 [data-theme="dark"] .search-modal {
   background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .navbar-settings {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--border);
+}
+
+/* Dark mode stat cards */
+[data-theme="dark"] .stat {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .stat:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
 }

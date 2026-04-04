@@ -22,6 +22,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 .viewer-actions {
@@ -34,6 +35,7 @@
   font-size: 0.9375rem;
   color: var(--text-secondary);
   margin-bottom: 0.75rem;
+  line-height: 1.6;
 }
 
 .viewer-meta {
@@ -43,6 +45,12 @@
   font-size: 0.8125rem;
   color: var(--text-muted);
   margin-bottom: 0.5rem;
+}
+
+.viewer-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .viewer-tags {
@@ -57,6 +65,25 @@
   display: flex;
   flex-direction: column;
   background: var(--bg-tertiary);
+  position: relative;
+}
+
+.pdf-viewer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, #a78bfa 50%, var(--primary) 100%);
+  background-size: 200% 100%;
+  animation: shimmer-bar 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes shimmer-bar {
+  0%, 100% { background-position: -200% 0; }
+  50% { background-position: 200% 0; }
 }
 
 .pdf-iframe {

@@ -5,6 +5,7 @@
   z-index: 2000;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -19,8 +20,9 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl, 0 20px 40px rgba(0, 0, 0, 0.15));
   overflow: hidden;
+  animation: scaleIn 0.2s ease;
 }
 
 .search-input-wrap {
@@ -67,7 +69,7 @@
   padding: 0.75rem 1rem;
   border-radius: var(--radius-xs);
   text-align: left;
-  transition: background var(--transition);
+  transition: all 0.15s ease;
 }
 
 .search-result-item:hover {
@@ -79,6 +81,10 @@
   font-weight: 600;
   color: var(--text);
   margin-bottom: 0.25rem;
+}
+
+.search-result-item:hover .search-result-title {
+  color: var(--primary);
 }
 
 .search-result-desc {
@@ -109,10 +115,17 @@
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 3px;
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
 /* === Selection === */
@@ -125,4 +138,9 @@
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+/* === Smooth page transitions === */
+.main-content {
+  animation: fadeIn 0.4s ease;
 }

@@ -2,23 +2,26 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 1rem;
+  animation: fadeIn 0.2s ease;
 }
 
 .auth-modal {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   width: 100%;
   max-width: 400px;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl, 0 20px 40px rgba(0, 0, 0, 0.15));
+  animation: scaleIn 0.25s ease;
 }
 
 .auth-close {
@@ -29,26 +32,29 @@
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.375rem;
   border-radius: var(--radius-xs);
-  transition: color var(--transition);
+  transition: all 0.2s ease;
 }
 
 .auth-close:hover {
   color: var(--text);
+  background: var(--bg-tertiary);
 }
 
 .auth-title {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.375rem;
   color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 .auth-subtitle {
   font-size: 0.875rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
 }
 
 .auth-error {
@@ -79,17 +85,19 @@
   justify-content: center;
   gap: 0.625rem;
   width: 100%;
-  padding: 0.7rem 1rem;
+  padding: 0.75rem 1rem;
   border: none;
   border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity var(--transition);
+  transition: all 0.2s ease;
 }
 
 .auth-social-btn:hover {
-  opacity: 0.85;
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .auth-kakao {
@@ -150,14 +158,14 @@
 }
 
 .auth-field input {
-  padding: 0.625rem 0.75rem;
+  padding: 0.7rem 0.875rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 0.875rem;
   background: var(--bg);
   color: var(--text);
   outline: none;
-  transition: border-color var(--transition);
+  transition: all 0.2s ease;
 }
 
 .auth-field input:focus {
@@ -166,7 +174,7 @@
 }
 
 .auth-submit {
-  padding: 0.625rem 1rem;
+  padding: 0.7rem 1rem;
   background: var(--primary);
   color: #fff;
   border: none;
@@ -174,12 +182,14 @@
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition);
+  transition: all 0.2s ease;
   margin-top: 0.5rem;
 }
 
 .auth-submit:hover:not(:disabled) {
   background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--primary-glow, rgba(59, 130, 246, 0.25));
 }
 
 .auth-submit:disabled {

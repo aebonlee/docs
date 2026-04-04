@@ -12,7 +12,7 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
@@ -25,23 +25,61 @@
   right: 0;
   height: 3px;
   background: var(--card-color, var(--primary));
+  transform: scaleX(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left;
+}
+
+.category-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--card-color, var(--primary)) 4%, transparent) 0%,
+    transparent 60%
+  );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  border-radius: var(--radius);
 }
 
 .category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--card-color, var(--primary));
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl, 0 20px 40px rgba(0, 0, 0, 0.12));
+  border-color: color-mix(in srgb, var(--card-color, var(--primary)) 40%, var(--border));
 }
 
 .category-card:hover::before {
+  transform: scaleX(1);
+}
+
+.category-card:hover::after {
   opacity: 1;
 }
 
 .category-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--card-color, var(--primary)) 8%, transparent);
+  border-radius: var(--radius-sm);
   margin-bottom: 1rem;
-  opacity: 0.85;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.category-card:hover .category-icon {
+  background: color-mix(in srgb, var(--card-color, var(--primary)) 12%, transparent);
+  transform: scale(1.05);
 }
 
 .category-name {
@@ -49,22 +87,34 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--text);
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
 }
 
 .category-desc {
   font-size: 0.875rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
   flex: 1;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .category-count {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-light);
-  padding: 0.25rem 0.75rem;
+  color: var(--card-color, var(--primary));
+  background: color-mix(in srgb, var(--card-color, var(--primary)) 8%, transparent);
+  padding: 0.3rem 0.875rem;
   border-radius: 100px;
   align-self: flex-start;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover .category-count {
+  background: color-mix(in srgb, var(--card-color, var(--primary)) 14%, transparent);
 }
