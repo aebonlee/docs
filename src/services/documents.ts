@@ -27,7 +27,7 @@ export async function fetchDocuments(): Promise<Document[]> {
   if (!supabase) return staticDocuments
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .select('*')
     .order('added_at', { ascending: false })
 
@@ -42,7 +42,7 @@ export async function fetchDocumentsByCategory(categoryId: string): Promise<Docu
   if (!supabase) return staticByCategory(categoryId)
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .select('*')
     .eq('category', categoryId)
     .order('added_at', { ascending: false })
@@ -58,7 +58,7 @@ export async function fetchDocumentById(id: string): Promise<Document | undefine
   if (!supabase) return staticById(id)
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .select('*')
     .eq('slug', id)
     .single()
@@ -75,7 +75,7 @@ export async function searchDocumentsAsync(query: string): Promise<Document[]> {
 
   const q = query.toLowerCase()
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .select('*')
     .or(`title.ilike.%${q}%,description.ilike.%${q}%`)
     .order('added_at', { ascending: false })
@@ -97,7 +97,7 @@ export async function fetchCategoryCounts(): Promise<Record<string, number>> {
   }
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .select('category')
 
   if (error) {
@@ -125,7 +125,7 @@ export async function createDocument(doc: DocumentPayload): Promise<Document> {
   if (!supabase) throw new Error('Supabase not configured')
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .insert({
       slug: doc.slug,
       category: doc.category,
@@ -161,7 +161,7 @@ export async function updateDocument(id: string, doc: DocumentUpdate): Promise<D
   if (doc.addedAt !== undefined) updates.added_at = doc.addedAt
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .update(updates)
     .eq('slug', id)
     .select()
@@ -175,7 +175,7 @@ export async function deleteDocument(id: string): Promise<void> {
   if (!supabase) throw new Error('Supabase not configured')
 
   const { error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .delete()
     .eq('slug', id)
 
@@ -186,7 +186,7 @@ export async function deleteDocuments(ids: string[]): Promise<void> {
   if (!supabase) throw new Error('Supabase not configured')
 
   const { error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .delete()
     .in('slug', ids)
 
@@ -210,7 +210,7 @@ export async function seedDocuments(docs: Document[]): Promise<Document[]> {
   }))
 
   const { data, error } = await supabase
-    .from('documents')
+    .from('docs_documents')
     .upsert(rows, { onConflict: 'slug' })
     .select()
 

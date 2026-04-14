@@ -5,7 +5,7 @@ export async function fetchMembers(): Promise<Member[]> {
   if (!supabase) return []
 
   const { data, error } = await supabase
-    .from('profiles')
+    .from('docs_profiles')
     .select('*')
     .order('created_at', { ascending: false })
 
@@ -20,7 +20,7 @@ export async function fetchMemberCount(): Promise<number> {
   if (!supabase) return 0
 
   const { count, error } = await supabase
-    .from('profiles')
+    .from('docs_profiles')
     .select('*', { count: 'exact', head: true })
 
   if (error) return 0
