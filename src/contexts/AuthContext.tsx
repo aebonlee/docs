@@ -3,6 +3,7 @@ import { supabase, setSharedSession, getSharedSession, clearSharedSession } from
 import { isAdmin } from '../config/admin'
 import type { AuthContextValue, AccountBlock, SupabaseUser } from '../types'
 import { useIdleTimeout } from '../hooks/useIdleTimeout';
+import ProfileCompleteModal from '../components/ProfileCompleteModal';
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
@@ -18,6 +19,7 @@ export function AuthProvider({ children }: AuthProviderProps): ReactElement {
   const [user, setUser] = useState<SupabaseUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [accountBlock, setAccountBlock] = useState<AccountBlock | null>(null)
+  const [_userProfile, _setUserProfile] = useState<any>(null)
 
   const clearAccountBlock = useCallback(() => setAccountBlock(null), [])
 
@@ -103,17 +105,16 @@ export function AuthProvider({ children }: AuthProviderProps): ReactElement {
       }
     )
 
+    return () => subscription.unsubscribe()
+  }, [handlePostAuth])
 
   // 10분 무동작 세션 타임아웃
   useIdleTimeout({
-  enabled: !!user,
-  onTimeout: () => {
-  clearSharedSession();
-  },
+    enabled: !!user,
+    onTimeout: () => {
+      clearSharedSession();
+    },
   });
-
-    return () => subscription.unsubscribe()
-  }, [handlePostAuth])
 
   async function signInWithEmail(email: string, password: string): Promise<unknown> {
     if (!supabase) throw new Error('Supabase not configured')
@@ -144,7 +145,7 @@ export function AuthProvider({ children }: AuthProviderProps): ReactElement {
 
   async function signOut(): Promise<void> {
     if (!supabase) return
-    const { error } = await supabase.auth.signOut()
+    const { error } = await supabase?.auth.signOut()
     if (error) throw error
   }
 
@@ -161,5 +162,23 @@ export function AuthProvider({ children }: AuthProviderProps): ReactElement {
     signOut,
   }
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  // ─── 프로필 완성 체크 ───
+  const _loadUserProfile = useCallback(async (uid: string) => {
+    try {
+      const { data } = await supabase!.from('user_profiles').select('name,phone').eq('id', uid).maybeSingle();
+      _setUserProfile(data);
+    } catch { _setUserProfile(null); }
+  }, []);
+  useEffect(() => { if (user) _loadUserProfile(user.id); }, [user, _loadUserProfile]);
+  const refreshProfile = useCallback(async () => { if (user) await _loadUserProfile(user.id); }, [user, _loadUserProfile]);
+  const needsProfileCompletion = !!user && !!_userProfile && (!_userProfile.name || !_userProfile.phone);
+
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+      {needsProfileCompletion && user && (
+        <ProfileCompleteModal user={user as any} onComplete={refreshProfile} />
+      )}
+    </AuthContext.Provider>
+  )
 }
