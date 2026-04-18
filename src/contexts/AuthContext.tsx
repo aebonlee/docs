@@ -106,10 +106,10 @@ export function AuthProvider({ children }: AuthProviderProps): ReactElement {
 
   // 10분 무동작 세션 타임아웃
   useIdleTimeout({
-    enabled: !!user,
-    onTimeout: () => {
-      clearSharedSession();
-    },
+  enabled: !!user,
+  onTimeout: () => {
+  clearSharedSession();
+  },
   });
 
     return () => subscription.unsubscribe()
