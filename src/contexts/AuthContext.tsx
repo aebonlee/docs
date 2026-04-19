@@ -171,7 +171,7 @@ export function AuthProvider({ children }: AuthProviderProps): ReactElement {
   }, []);
   useEffect(() => { if (user) _loadUserProfile(user.id); }, [user, _loadUserProfile]);
   const refreshProfile = useCallback(async () => { if (user) await _loadUserProfile(user.id); }, [user, _loadUserProfile]);
-  const needsProfileCompletion = !!user && !!_userProfile && (!_userProfile.name || !_userProfile.phone);
+  const needsProfileCompletion = !!user && !!_userProfile && !_userProfile.name;
 
   return (
     <AuthContext.Provider value={value}>
