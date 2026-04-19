@@ -13,7 +13,7 @@
  *   await sendSMS({ receiver: '01012345678', message: '안녕하세요' });
  */
 
-import getSupabase from './supabase';
+import { supabase } from './supabase';
 
 // ── 타입 정의 ────────────────────────────────────────────────
 
@@ -41,7 +41,7 @@ export interface NotificationResult {
  * 발신 주소: noreply@dreamitbiz.com
  */
 export async function sendEmail(params: EmailParams): Promise<NotificationResult> {
-  const sb = getSupabase();
+  const sb = supabase;
   if (!sb) return { success: false, error: 'Supabase 초기화 실패' };
 
   try {
@@ -63,7 +63,7 @@ export async function sendEmail(params: EmailParams): Promise<NotificationResult
  * 90바이트(EUC-KR 기준) 초과 시 자동으로 LMS 전환
  */
 export async function sendSMS(params: SMSParams): Promise<NotificationResult> {
-  const sb = getSupabase();
+  const sb = supabase;
   if (!sb) return { success: false, error: 'Supabase 초기화 실패' };
 
   try {
