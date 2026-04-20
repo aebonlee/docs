@@ -1,0 +1,1 @@
+import{r as c}from"./index-CKUqcnq2.js";function a({title:e,description:t}){const r=e?`${e} - Docs Library`:"Docs Library";return c.useEffect(()=>{document.title=r;const o=document.querySelector('meta[name="description"]');o&&t&&o.setAttribute("content",t)},[r,t]),null}export{a as S};
